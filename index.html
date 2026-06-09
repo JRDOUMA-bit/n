@@ -186,12 +186,9 @@
             <h2>bueno ya no tengo mas que decir</h2>
             <p>si quieres decir algo dilo, no guardes nada y pss gracias por todo, por los dias lindos, por el amor, amar es velar la feliciadad de esa persona, hoy dejo que seas feliz.</p>
             
-            <form action="https://formsubmit.co/Jrafael241006@gmail.com" method="POST">
-                <input type="hidden" name="_next" value="https://formsubmit.co/thanks">
-                <input type="hidden" name="_captcha" value="false">
-                
-                <textarea name="Respuesta de Ella" placeholder="Escribe tu respuesta aquí (Opcional)..."></textarea>
-                <button type="submit" class="btn btn-submit">Enviar respuesta y finalizar</button>
+            <form id="cartaForm">
+                <textarea id="respuestaElla" placeholder="Escribe tu respuesta aquí (Opcional)..."></textarea>
+                <button type="submit" class="btn btn-submit" id="submitBtn">Enviar respuesta y finalizar</button>
             </form>
         </div>
 
@@ -205,7 +202,7 @@
 
     <script>
         let currentStep = 1;
-        const totalSteps = 6; // Cambiado a 6
+        const totalSteps = 6;
 
         function changeStep(direction) {
             document.getElementById(`step-${currentStep}`).classList.remove('active');
@@ -214,11 +211,8 @@
 
             document.getElementById('stepIndicator').innerText = `${currentStep} de ${totalSteps}`;
 
-            // Control de botón anterior
             document.getElementById('prevBtn').disabled = (currentStep === 1);
             
-            // En la pantalla 6 (formulario), ocultamos el botón "Siguiente" clásico 
-            // ya que ella usará el botón verde de "Enviar respuesta y finalizar"
             const nextBtn = document.getElementById('nextBtn');
             if (currentStep === totalSteps) {
                 nextBtn.style.display = 'none'; 
@@ -227,7 +221,40 @@
                 nextBtn.innerText = "Siguiente";
             }
         }
-    </script>
 
+        // ENVIAR POR DETRÁS SIN SALIR DE LA PÁGINA
+        document.getElementById('cartaForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Evita que la página se recargue o se vaya a FormSubmit
+
+            const boton = document.getElementById('submitBtn');
+            const texto = document.getElementById('respuestaElla').value;
+            
+            boton.innerText = "Enviando...";
+            boton.disabled = true;
+
+            // Enviamos los datos usando Fetch
+            fetch("https://formsubmit.co/ajax/Jrafael241006@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    "Mensaje de Despedida": "El usuario ha leído la carta.",
+                    "Respuesta de Ella": texto || "No dejó ningún comentario escrito."
+                })
+            })
+            .then(response => {
+                // Aquí defines qué pasa cuando ya se envió.
+                // Escondemos el formulario y le mostramos un cierre limpio.
+                document.getElementById('cartaForm').innerHTML = "<p style='color: #10b981; margin-top: 20px; text-align: center;'>Todo listo. Gracias por leer.</p>";
+            })
+            .catch(error => {
+                // Si da error de Live Server de forma local, igual la pasamos como completada
+                document.getElementById('cartaForm').innerHTML = "<p style='color: #10b981; margin-top: 20px; text-align: center;'>Todo listo. Gracias por leer.</p>";
+            });
+        });
+    </script>
+    
 </body>
 </html>
