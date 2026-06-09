@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Ti</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0f111a;
+            color: #a6adbb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 550px;
+            width: 100%;
+            background: #151926;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-left: 4px solid #ff4a5a;
+            position: relative;
+            min-height: 360px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.6s ease forwards;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        h2 {
+            color: #f2f4f8;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .highlight {
+            color: #ff4a5a;
+            font-weight: 500;
+        }
+
+        .signature {
+            font-style: italic;
+            color: #f2f4f8;
+            margin-top: 15px;
+        }
+
+        /* Estilos para el formulario de la parte 6 */
+        textarea {
+            width: 100%;
+            height: 120px;
+            background-color: #0f111a;
+            border: 1px solid #23293d;
+            border-radius: 6px;
+            color: #f2f4f8;
+            padding: 12px;
+            font-family: inherit;
+            resize: none;
+            margin-top: 10px;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        textarea:focus {
+            border-color: #ff4a5a;
+        }
+
+        /* Botón de envío específico */
+        .btn-submit {
+            background-color: #10b981; /* Verde sutil para diferenciar el envío */
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        .btn-submit:hover {
+            background-color: #059669;
+        }
+
+        /* Navegación */
+        .navigation {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #23293d;
+            padding-top: 20px;
+        }
+
+        .step-indicator {
+            font-size: 13px;
+            color: #64748b;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            background-color: #ff4a5a;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s ease, opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e03e4d;
+        }
+
+        .btn:disabled {
+            background-color: #23293d;
+            color: #64748b;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #a6adbb;
+            border: 1px solid #23293d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #1e2333;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="step active" id="step-1">
+            <h2>Lo que quiero que sepas...</h2>
+            <p>hola Nahomy....... espero estes bien solo queria que supieras que estuve pensando y tengo cosas que decirte y desiciones que quiero que sepas </p>
+        </div>
+
+        <div class="step" id="step-2">
+            <h2>lo que pense</h2>
+            <p>estuve pensando me dijiste que yo cambie pero y me lo recalcaste.... tu tambien lo hicistes y <span class="highlight">nunca te dije nada por amor</span>, pero tambien cambiastes, ya no llegaban tus mensajes, sentia que habias perdido el interes en mi y ya no quise seguir insistiendo, senti que solo te molestaba...</p>
+        </div>
+
+        <div class="step" id="step-3">
+            <h2>la verdad</h2>
+            <p>no me arrepiento de nada, pero hoy dejo de insistirte y aceptar que debo dejar de molestarte, se feliz, espero que consigas a alguien que de verdad valga la pena y te entienda como yo no pude hacerlo .</p>
+        </div>
+
+        <div class="step" id="step-4">
+            <h2>porque esta desicion</h2>
+            <p>la verdad al pensar me di cuenta que tu piensas mas en ti y yo en los demas, somos mas opuestos de lo que pensamos, no se si me odias, yo te amo, pero no puedo estar con alguien que se sienta obligada a estar conmigo, y tampoco estoy seguro de estar con alguien que solo piensa en si misma siempre y que cuando aya un minimo problema me este terminando .</p>
+        </div>
+
+        <div class="step" id="step-5">
+            <h2>lo que mas apoya mi desicion</h2>
+            <p>que tampoco me resulta estar con alguien que no sabe lo que quiere cuando yo si sabia lo que queria, lo quise todo contigo, pero ya veo que tu no conmigo, cambiaste mi forma de pensar, de ver el amor, y la idea del matrimonio, y te agradezco.</p>
+            <div class="signature">gracias por haberme dejado amarte.</div>
+        </div>
+
+        <div class="step" id="step-6">
+            <h2>bueno ya no tengo mas que decir</h2>
+            <p>si quieres decir algo dilo, no guardes nada y pss gracias por todo, por los dias lindos, por el amor, amar es velar la feliciadad de esa persona, hoy dejo que seas feliz.</p>
+            
+            <form action="https://formsubmit.co/Jrafael241006@gmail.com" method="POST">
+                <input type="hidden" name="_next" value="https://formsubmit.co/thanks">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <textarea name="Respuesta de Ella" placeholder="Escribe tu respuesta aquí (Opcional)..."></textarea>
+                <button type="submit" class="btn btn-submit">Enviar respuesta y finalizar</button>
+            </form>
+        </div>
+
+        <div class="navigation">
+            <button class="btn btn-secondary" id="prevBtn" onclick="changeStep(-1)" disabled>Anterior</button>
+            <span class="step-indicator" id="stepIndicator">1 de 6</span>
+            <button class="btn" id="nextBtn" onclick="changeStep(1)">Siguiente</button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 6; // Cambiado a 6
+
+        function changeStep(direction) {
+            document.getElementById(`step-${currentStep}`).classList.remove('active');
+            currentStep += direction;
+            document.getElementById(`step-${currentStep}`).classList.add('active');
+
+            document.getElementById('stepIndicator').innerText = `${currentStep} de ${totalSteps}`;
+
+            // Control de botón anterior
+            document.getElementById('prevBtn').disabled = (currentStep === 1);
+            
+            // En la pantalla 6 (formulario), ocultamos el botón "Siguiente" clásico 
+            // ya que ella usará el botón verde de "Enviar respuesta y finalizar"
+            const nextBtn = document.getElementById('nextBtn');
+            if (currentStep === totalSteps) {
+                nextBtn.style.display = 'none'; 
+            } else {
+                nextBtn.style.display = 'block';
+                nextBtn.innerText = "Siguiente";
+            }
+        }
+    </script>
+
+</body>
+</html>
